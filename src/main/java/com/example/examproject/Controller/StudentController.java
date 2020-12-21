@@ -1,9 +1,11 @@
 package com.example.examproject.Controller;
 
 import com.example.examproject.Model.Student;
+import com.example.examproject.Model.Supervisor;
 import com.example.examproject.Repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -25,6 +27,7 @@ public class StudentController {
     public List<Student> retrieveAllStudents() {
         return studentRepository.findAll();
     }
+
 
     // Delete metode - Fjern specifik studerende ( ID )
     @DeleteMapping ("/students/delete{id}")

@@ -1,20 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <head>
     <meta charset="UTF-8">
     <title>Student Administration</title>
 </head>
 <body>
-
+<form id="formoid" action="studentFormInsert.php" title="" method="post">
+<div class="studentCreation">
 <h2>Add Student:</h2>
-    <p>Name: </p>
-    <p>E-mail: </p>
-    <p>Supervisor: </p>
+    <!--    Name     -->
 
-<button>Add Student</button>
+<p>
+    <label class="title">Navn: </label>
+    <input type="text" id="fname" name="firstname">
+</p>
+    <!--    Email     -->
+    <p>
+    <label class="title">Email: </label>
+    <input type="text" id="email" name="email">
+    </p>
 
+    <!--    Supervisor     -->
+<p>
+    <label>Supervisor: </label>
+        <select name="supervisorDropdown">
+            <option value="supervisor0">Teacher 1</option>
+            <option value="supervisor1">Teacher 2</option>
+            <option value="supervisor2">Teacher 3</option>
+            <option value="supervisor3">Teacher 4</option>
+            <option value="supervisor4">Teacher 5</option>
+        </select>
+    </p>
+    <input type="submit" id="submitbutton" name="submitButton" value="Submit">
+</div>
+</form>
+
+<script src="">
+
+
+
+
+
+</script>
+
+
+<div class="studentList">
 <h2>List of students:</h2>
-<p>Name: </p>
+<p>Name:  </p>
+</div>
 
 </body>
 </html>

@@ -6,7 +6,7 @@ import java.util.Set;
 @Entity
 public class Supervisor {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
@@ -24,6 +24,12 @@ public class Supervisor {
         this.id = id;
         this.name = name;
     }
+
+    public Supervisor(Set<Student> students) {
+        this.students = students;
+    }
+
+
 
 
     // Getters and Setters
@@ -50,4 +56,5 @@ public class Supervisor {
     public void setStudents(Set<Student> students) {
         this.students = students;
     }
+
 }
