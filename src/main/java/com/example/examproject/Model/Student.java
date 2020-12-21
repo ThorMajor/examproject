@@ -15,18 +15,17 @@ public class Student {
     private Supervisor supervisor;
 
 
-
-    //  Constructor
+//  Constructor
 
     public Student() {
 
     }
 
-    public Student(int id, String name, String email, Supervisor supervisor) {
+    public Student(int id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.supervisor = supervisor;
+
     }
 
     // Getters and Setters
@@ -55,11 +54,4 @@ public class Student {
         this.email = email;
     }
 
-    public Supervisor getSupervisor() {
-        return supervisor;
-    }
-
-    public void setSupervisor(Supervisor supervisor) {
-        this.supervisor = supervisor;
-    }
 }

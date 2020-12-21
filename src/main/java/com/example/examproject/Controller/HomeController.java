@@ -14,14 +14,12 @@ import java.util.List;
 
 @RestController
 public class HomeController {
+
     @Autowired
     private StudentRepository studentRepository;
 
     @Autowired
     private SupervisorRepository supervisorRepo;
-
-
-
 
     @GetMapping("/")
     public String index(Model model) {
@@ -35,7 +33,5 @@ public class HomeController {
 
         return "student-admin";
     }
-
-
 
 }
