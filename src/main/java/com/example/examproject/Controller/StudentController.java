@@ -1,7 +1,9 @@
 package com.example.examproject.Controller;
 
 import com.example.examproject.Model.Student;
+import com.example.examproject.Model.Supervisor;
 import com.example.examproject.Repository.StudentRepository;
+import com.example.examproject.Repository.SupervisorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,9 @@ public class StudentController {
 
     @Autowired
     private StudentRepository studentRepository;
+
+    @Autowired
+    private SupervisorRepository supervisorRepository;
 
     // Read metode - Læs alle studerende fra studentRepository
     @GetMapping("/students")
@@ -31,8 +36,13 @@ public class StudentController {
 
     // Create metode - Tilføj studerende
     @PostMapping("/students/add")
-    public void createStudent (@RequestBody Student student) {
-        Student savedStudent = studentRepository.save(student);
+    @ResponseBody
+    public void createStudent (@ModelAttribute Student student, @RequestParam("supervisor")int id) {
+        System.out.println(student.getName());
+        Supervisor supervisor = supervisorRepository.findById(id).get();
+
+        student.setSupervisor(supervisor);
+        Student newStudent = studentRepository.save(student);
     }
     /*
     public ResponseEntity<Object> createStudent(@RequestBody Student student) {

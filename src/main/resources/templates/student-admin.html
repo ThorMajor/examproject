@@ -7,31 +7,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Student Administration</title>
-    <style>
-        th, td, p, input {
-            font:14px Verdana;
-        }
-        table, th, td
-        {
-            border: solid 1px #DDD;
-            border-collapse: collapse;
-            padding: 2px 3px;
-            text-align: center;
-        }
-        th {
-            font-weight:bold;
-        }
-    </style>
+
 </head>
 <body>
-<form id="formoid" action="studentFormInsert.php" title="" method="post">
 <div class="studentCreation">
 <h2>Add Student:</h2>
     <!--    Name     -->
-
 <p>
     <label class="title">Navn: </label>
-    <input type="text" id="fname" name="firstname">
+    <input type="text" id="name" name="name">
 </p>
     <!--    Email     -->
     <p>
@@ -42,63 +26,71 @@
     <!--    Supervisor     -->
 <p>
     <label>Supervisor: </label>
-        <select name="supervisorDropdown">
-            <option value="supervisor0">Teacher 1</option>
-            <option value="supervisor1">Teacher 2</option>
-            <option value="supervisor2">Teacher 3</option>
-            <option value="supervisor3">Teacher 4</option>
-            <option value="supervisor4">Teacher 5</option>
-        </select>
-    </p>
-    <input type="submit" id="submitbutton" name="submitButton" value="Add Student">
-</div>
-</form>
+    <input type="text" id="supervisor" name="supervisor">
 
+</p>
+    <button id="submit">Add Student</button>
+</div>
 
 <h2>List of students:</h2>
 <div class="studentList">
-    <div class=table-responsive">
-        <label id="studentName">Navn: </label>
-        <input type="text" id="name" name="name">
+        <label for="studentName">Navn: </label>
+        <input type="text" id="studentName" name="studentName">
 
 
-        <label id="emailList">Email: </label>
-        <input type="text" id="emailListed" name="email">
+        <label for="emailList">Email: </label>
+        <input type="text" id="emailList" name="emailList">
 
 
-        <label id="supervisorDropdown">Supervisor: </label>
-        <select id="supervisorList" name="supervisorDropdown" >
-            <option id="teacherOne"></option>
-            <option value="supervisor1"></option>
-            <option value="supervisor2"></option>
-            <option value="supervisor3"></option>
-            <option value="supervisor4"></option>
-        </select>
+        <label id="supervisorDropdownBar">Supervisor: </label>
+    <select id="supervisorDropdown">
+        <option value="supervisor100">Teacher 1</option>
+        <option value="supervisor101">Teacher 2</option>
+        <option value="supervisor102">Teacher 3</option>
+        <option value="supervisor103">Teacher 4</option>
+        <option value="supervisor104">Teacher 5</option>
+    </select>
+
         <input type="submit" id="updateBtn" name="updateBtn" value="Update">
 
         <input type="submit" id="deleteBtn" name="deleteBtn" value="Delete">
-    </div>
 </div>
-
-
 <script>
     $(document).ready(function() {
-        $.ajax({
-            method:"GET",
-            url: "/students"
-        }).done(function(data) {
-            $('#name').val(data[0].name);
-            $('#emailListed').val(data[0].email);
-        });
+        $('#submit').click(function(){
+
+            $.ajax({
+                method:"POST",
+                url: "/students/add",
+                data : {
+                    name: $('#name').val(),
+                    email: $('#email').val(),
+                    supervisor: $('#supervisor').val()
+                }
+            })
+        })
+
     });
 </script>
 <script>
     $(document).ready(function() {
         $.ajax({
             method:"GET",
+            url: "/students"
+        }).done(function(data) {
+            $('#studentName').val(data[0].name);
+            $('#emailList').val(data[0].email);
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            method:"GET",
             url: "/supervisors"
         }).done(function(data) {
-            $('#teacherOne').val(data[0].supervisorDropdown);
+            $('#supervisorDropdown').val(data[0].name);
         });
     });
 
@@ -119,8 +111,6 @@
         });
     });
 -->
-
-
 
 
 </body>
