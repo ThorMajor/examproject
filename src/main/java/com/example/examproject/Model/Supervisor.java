@@ -11,10 +11,6 @@ public class Supervisor {
 
     private String name;
 
-    @OneToMany
-    private Set<Student> students;
-
-
     //  Constructor
     public Supervisor() {
 
@@ -24,12 +20,6 @@ public class Supervisor {
         this.id = id;
         this.name = name;
     }
-
-    public Supervisor(Set<Student> students) {
-        this.students = students;
-    }
-
-
 
 
     // Getters and Setters
@@ -47,14 +37,6 @@ public class Supervisor {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Set<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(Set<Student> students) {
-        this.students = students;
     }
 
 }

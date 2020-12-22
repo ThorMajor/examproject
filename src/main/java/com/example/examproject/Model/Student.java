@@ -11,9 +11,8 @@ public class Student {
     private String name;
     private String email;
 
-   /* @ManyToOne
-    private Supervisor supervisor; */
-
+    @ManyToOne
+    private Supervisor supervisor;
 
 //  Constructor
 
@@ -21,10 +20,15 @@ public class Student {
 
     }
 
-    public Student(int id, String name, String email) {
+    public void setSupervisor(Supervisor supervisor) {
+        this.supervisor = supervisor;
+    }
+
+    public Student(int id, String name, String email, Supervisor supervisor) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.supervisor = supervisor;
 
     }
 
@@ -54,4 +58,7 @@ public class Student {
         this.email = email;
     }
 
+    public Supervisor getSupervisor() {
+        return supervisor;
+    }
 }

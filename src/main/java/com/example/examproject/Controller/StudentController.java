@@ -1,33 +1,26 @@
 package com.example.examproject.Controller;
 
 import com.example.examproject.Model.Student;
-import com.example.examproject.Model.Supervisor;
 import com.example.examproject.Repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.swing.text.html.Option;
-import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 public class StudentController {
 
+
     @Autowired
     private StudentRepository studentRepository;
-
 
     // Read metode - Læs alle studerende fra studentRepository
     @GetMapping("/students")
     public List<Student> retrieveAllStudents() {
         return studentRepository.findAll();
     }
-
 
     // Delete metode - Fjern specifik studerende ( ID )
     @DeleteMapping ("/students/delete{id}")
@@ -37,7 +30,7 @@ public class StudentController {
     }
 
     // Create metode - Tilføj studerende
-    @PostMapping("/students")
+    @PostMapping("/students/add")
     public void createStudent (@RequestBody Student student) {
         Student savedStudent = studentRepository.save(student);
     }
@@ -53,7 +46,7 @@ public class StudentController {
     }
 */
     // Update metode - Ændr studerendes informationer
-    @PutMapping("/students/{id}")
+    @PutMapping("/students/edit{id}")
     public ResponseEntity<Object> updateStudent(@RequestBody Student student, @PathVariable int id) {
         Optional<Student> studentOptional = studentRepository.findById(id);
 
